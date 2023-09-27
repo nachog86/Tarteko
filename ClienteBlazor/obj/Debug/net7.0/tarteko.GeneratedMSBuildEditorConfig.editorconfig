@@ -1,0 +1,61 @@
+is_global = true
+build_property.TargetFramework = net7.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = 
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = false
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = browser
+build_property.RootNamespace = tarteko
+build_property.RootNamespace = tarteko
+build_property.ProjectDir = /Users/nachogomez/PROYECTOS/TARTEKO/tarteko/
+build_property.RazorLangVersion = 7.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = /Users/nachogomez/PROYECTOS/TARTEKO/tarteko
+build_property._RazorSourceGeneratorDebug = 
+
+[/Users/nachogomez/PROYECTOS/TARTEKO/tarteko/App.razor]
+build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/nachogomez/PROYECTOS/TARTEKO/tarteko/Pages/Counter.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQ291bnRlci5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/nachogomez/PROYECTOS/TARTEKO/tarteko/Pages/FetchData.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRmV0Y2hEYXRhLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/nachogomez/PROYECTOS/TARTEKO/tarteko/Pages/Home.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvSG9tZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/nachogomez/PROYECTOS/TARTEKO/tarteko/Pages/Index.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvSW5kZXgucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/nachogomez/PROYECTOS/TARTEKO/tarteko/Pages/NavBar.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvTmF2QmFyLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/nachogomez/PROYECTOS/TARTEKO/tarteko/Pages/Publicidad.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvUHVibGljaWRhZC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/nachogomez/PROYECTOS/TARTEKO/tarteko/Shared/SurveyPrompt.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL1N1cnZleVByb21wdC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/nachogomez/PROYECTOS/TARTEKO/tarteko/_Imports.razor]
+build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/nachogomez/PROYECTOS/TARTEKO/tarteko/Shared/MainLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL01haW5MYXlvdXQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-ht5xqossft
+
+[/Users/nachogomez/PROYECTOS/TARTEKO/tarteko/Shared/NavMenu.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL05hdk1lbnUucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-kp4egei1sy

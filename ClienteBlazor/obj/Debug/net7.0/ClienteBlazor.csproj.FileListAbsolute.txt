@@ -1,0 +1,6 @@
+/Users/nachogomez/PROYECTOS/TARTEKO/ClienteBlazor/obj/Debug/net7.0/ClienteBlazor.csproj.AssemblyReference.cache
+/Users/nachogomez/PROYECTOS/TARTEKO/ClienteBlazor/obj/Debug/net7.0/ClienteBlazor.GeneratedMSBuildEditorConfig.editorconfig
+/Users/nachogomez/PROYECTOS/TARTEKO/ClienteBlazor/obj/Debug/net7.0/ClienteBlazor.AssemblyInfoInputs.cache
+/Users/nachogomez/PROYECTOS/TARTEKO/ClienteBlazor/obj/Debug/net7.0/ClienteBlazor.AssemblyInfo.cs
+/Users/nachogomez/PROYECTOS/TARTEKO/ClienteBlazor/obj/Debug/net7.0/ClienteBlazor.csproj.CoreCompileInputs.cache
+/Users/nachogomez/PROYECTOS/TARTEKO/ClienteBlazor/obj/Debug/net7.0/ClienteBlazor.MvcApplicationPartsAssemblyInfo.cache
