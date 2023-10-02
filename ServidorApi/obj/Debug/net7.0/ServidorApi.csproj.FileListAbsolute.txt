@@ -77,3 +77,5 @@
 /Users/nachogomez/PROYECTOS/TARTEKO/ServidorApi/obj/Debug/net7.0/ref/ServidorApi.dll
 /Users/nachogomez/PROYECTOS/TARTEKO/ServidorApi/bin/Debug/net7.0/CloudinaryDotNet.dll
 /Users/nachogomez/PROYECTOS/TARTEKO/ServidorApi/bin/Debug/net7.0/Newtonsoft.Json.dll
+/Users/nachogomez/PROYECTOS/TARTEKO/ServidorApi/bin/Debug/net7.0/DotNetEnv.dll
+/Users/nachogomez/PROYECTOS/TARTEKO/ServidorApi/bin/Debug/net7.0/Sprache.dll

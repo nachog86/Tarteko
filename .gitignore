@@ -79,3 +79,5 @@ ScaffoldingReadMe.txt
 
 # Rider Files
 .idea/
+# .gitignore
+.env
