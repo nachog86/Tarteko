@@ -1,10 +1,9 @@
 ﻿@page "/"
+@using ClienteBlazor.Model
+@using ClienteBlazor.Service
 
-@using tarteko.Data
-@using tarteko.Service
 
 @inject IInmuebleService InmuebleService
-
 
 <!-- Publicidad Component -->
 <Publicidad />
@@ -32,10 +31,11 @@
 </div>
 
 @code {
-    private List<Inmueble> inmuebles = new List<Inmueble>();
+    private List<InmuebleDto> inmuebles = new List<InmuebleDto>();
 
     protected override async Task OnInitializedAsync()
     {
         inmuebles = (await InmuebleService.GetAllAsync()).ToList();
     }
 }
+

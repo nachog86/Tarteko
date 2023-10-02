@@ -1,4 +1,4 @@
-namespace ClienteBlazor.Models
+namespace ClienteBlazor.Model
 {
     public enum TipoInmuebleDto
     {

@@ -1,7 +1,8 @@
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
-using ServidorApi.Data;
+using System.Net.Http.Json;
+using ClienteBlazor.Model; // Aquí importamos el namespace donde está InmuebleDto
 
 namespace ClienteBlazor.Service
 {
@@ -14,11 +15,10 @@ namespace ClienteBlazor.Service
             _httpClient = httpClient;
         }
 
-        public async Task<IEnumerable<Inmueble>> GetAllAsync()
+        public async Task<IEnumerable<InmuebleDto>> GetAllAsync()
         {
-            return await _httpClient.GetFromJsonAsync<IEnumerable<Inmueble>>("api/Inmuebles");
+            return await _httpClient.GetFromJsonAsync<IEnumerable<InmuebleDto>>("api/Inmuebles");
         }
     }
 }
- 
 

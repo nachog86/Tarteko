@@ -4,6 +4,9 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.OpenApi.Models;
 using Microsoft.Extensions.Hosting;
+using CloudinaryDotNet;
+using CloudinaryDotNet.Actions;
+
 
 var builder = WebApplication.CreateBuilder(args);
 

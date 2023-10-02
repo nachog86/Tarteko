@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "llibQeH8mfNpmV3Q/dep0q4IYrI36QP8TSc22FqZ9C4Slqaw6KNPQPxC+irxPSHp7OZQUR2wCSAwitY8/outsw==",
+  "dgSpecHash": "Wy+B7BgZDlolXZ8t6WoZNFR81PL5hdjqjCuUozxRKHl+ADqerelZ3Pv5GUZ20B5a9AWiHyMDrARk4U879Vxk4Q==",
   "success": true,
   "projectFilePath": "/Users/nachogomez/PROYECTOS/TARTEKO/ClienteBlazor/ClienteBlazor.csproj",
   "expectedPackageFiles": [
@@ -29,8 +29,9 @@
     "/Users/nachogomez/.nuget/packages/microsoft.jsinterop/7.0.0/microsoft.jsinterop.7.0.0.nupkg.sha512",
     "/Users/nachogomez/.nuget/packages/microsoft.jsinterop.webassembly/7.0.0/microsoft.jsinterop.webassembly.7.0.0.nupkg.sha512",
     "/Users/nachogomez/.nuget/packages/system.io.pipelines/7.0.0/system.io.pipelines.7.0.0.nupkg.sha512",
+    "/Users/nachogomez/.nuget/packages/system.net.http.json/7.0.1/system.net.http.json.7.0.1.nupkg.sha512",
     "/Users/nachogomez/.nuget/packages/system.text.encodings.web/7.0.0/system.text.encodings.web.7.0.0.nupkg.sha512",
-    "/Users/nachogomez/.nuget/packages/system.text.json/7.0.0/system.text.json.7.0.0.nupkg.sha512",
+    "/Users/nachogomez/.nuget/packages/system.text.json/7.0.2/system.text.json.7.0.2.nupkg.sha512",
     "/Users/nachogomez/.nuget/packages/microsoft.netcore.app.runtime.mono.browser-wasm/7.0.10/microsoft.netcore.app.runtime.mono.browser-wasm.7.0.10.nupkg.sha512"
   ],
   "logs": []
