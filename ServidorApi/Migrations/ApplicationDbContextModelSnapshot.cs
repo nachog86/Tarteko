@@ -2,7 +2,6 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using ServidorApi.Data;
@@ -12,11 +11,9 @@ using ServidorApi.Data;
 namespace ServidorApi.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230926153038_InitialCreate")]
-    partial class InitialCreate
+    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
     {
-        /// <inheritdoc />
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -25,7 +22,7 @@ namespace ServidorApi.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.Entity("tarteko.Data.Consulta", b =>
+            modelBuilder.Entity("ServidorApi.Data.Consulta", b =>
                 {
                     b.Property<int>("ConsultaId")
                         .ValueGeneratedOnAdd()
@@ -40,7 +37,6 @@ namespace ServidorApi.Migrations
                         .HasColumnType("integer");
 
                     b.Property<string>("Mensaje")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<int>("UsuarioId")
@@ -55,7 +51,7 @@ namespace ServidorApi.Migrations
                     b.ToTable("Consultas");
                 });
 
-            modelBuilder.Entity("tarteko.Data.Imagen", b =>
+            modelBuilder.Entity("ServidorApi.Data.Imagen", b =>
                 {
                     b.Property<int>("ImagenId")
                         .ValueGeneratedOnAdd()
@@ -64,14 +60,12 @@ namespace ServidorApi.Migrations
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("ImagenId"));
 
                     b.Property<string>("Descripcion")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<int>("InmuebleId")
                         .HasColumnType("integer");
 
                     b.Property<string>("Url")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.HasKey("ImagenId");
@@ -81,17 +75,13 @@ namespace ServidorApi.Migrations
                     b.ToTable("Imagenes");
                 });
 
-            modelBuilder.Entity("tarteko.Data.Inmueble", b =>
+            modelBuilder.Entity("ServidorApi.Data.Inmueble", b =>
                 {
                     b.Property<int>("InmuebleId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer");
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("InmuebleId"));
-
-                    b.Property<string>("Amenidades")
-                        .IsRequired()
-                        .HasColumnType("text");
 
                     b.Property<decimal?>("AreaTerreno")
                         .HasColumnType("numeric");
@@ -112,9 +102,8 @@ namespace ServidorApi.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<string>("Estado")
-                        .IsRequired()
-                        .HasColumnType("text");
+                    b.Property<int>("Estado")
+                        .HasColumnType("integer");
 
                     b.Property<decimal?>("MetrosCubiertos")
                         .HasColumnType("numeric");
@@ -145,9 +134,8 @@ namespace ServidorApi.Migrations
                     b.Property<bool>("TieneCochera")
                         .HasColumnType("boolean");
 
-                    b.Property<string>("TipoInmueble")
-                        .IsRequired()
-                        .HasColumnType("text");
+                    b.Property<int>("TipoInmueble")
+                        .HasColumnType("integer");
 
                     b.HasKey("InmuebleId");
 
@@ -156,7 +144,7 @@ namespace ServidorApi.Migrations
                     b.ToTable("Inmuebles");
                 });
 
-            modelBuilder.Entity("tarteko.Data.Transaccion", b =>
+            modelBuilder.Entity("ServidorApi.Data.Transaccion", b =>
                 {
                     b.Property<int>("TransaccionId")
                         .ValueGeneratedOnAdd()
@@ -185,7 +173,7 @@ namespace ServidorApi.Migrations
                     b.ToTable("Transacciones");
                 });
 
-            modelBuilder.Entity("tarteko.Data.Usuario", b =>
+            modelBuilder.Entity("ServidorApi.Data.Usuario", b =>
                 {
                     b.Property<int>("UsuarioId")
                         .ValueGeneratedOnAdd()
@@ -193,20 +181,19 @@ namespace ServidorApi.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("UsuarioId"));
 
-                    b.Property<string>("Auth0UserId")
-                        .IsRequired()
-                        .HasColumnType("text");
-
                     b.Property<string>("Email")
-                        .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<string>("Nombre")
-                        .IsRequired()
-                        .HasColumnType("text");
+                    b.Property<byte[]>("PasswordHash")
+                        .HasColumnType("bytea");
 
-                    b.Property<string>("Rol")
-                        .IsRequired()
+                    b.Property<byte[]>("PasswordSalt")
+                        .HasColumnType("bytea");
+
+                    b.Property<int>("Rol")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("Username")
                         .HasColumnType("text");
 
                     b.HasKey("UsuarioId");
@@ -214,13 +201,15 @@ namespace ServidorApi.Migrations
                     b.ToTable("Usuarios");
                 });
 
-            modelBuilder.Entity("tarteko.Data.UsuarioFavorito", b =>
+            modelBuilder.Entity("ServidorApi.Data.UsuarioFavorito", b =>
                 {
                     b.Property<int>("UsuarioId")
-                        .HasColumnType("integer");
+                        .HasColumnType("integer")
+                        .HasColumnOrder(0);
 
                     b.Property<int>("InmuebleId")
-                        .HasColumnType("integer");
+                        .HasColumnType("integer")
+                        .HasColumnOrder(1);
 
                     b.HasKey("UsuarioId", "InmuebleId");
 
@@ -229,13 +218,15 @@ namespace ServidorApi.Migrations
                     b.ToTable("UsuariosFavoritos");
                 });
 
-            modelBuilder.Entity("tarteko.Data.UsuarioInmueble", b =>
+            modelBuilder.Entity("ServidorApi.Data.UsuarioInmueble", b =>
                 {
                     b.Property<int>("UsuarioId")
-                        .HasColumnType("integer");
+                        .HasColumnType("integer")
+                        .HasColumnOrder(0);
 
                     b.Property<int>("InmuebleId")
-                        .HasColumnType("integer");
+                        .HasColumnType("integer")
+                        .HasColumnOrder(1);
 
                     b.HasKey("UsuarioId", "InmuebleId");
 
@@ -244,7 +235,7 @@ namespace ServidorApi.Migrations
                     b.ToTable("UsuarioInmuebles");
                 });
 
-            modelBuilder.Entity("tarteko.Data.Video", b =>
+            modelBuilder.Entity("ServidorApi.Data.Video", b =>
                 {
                     b.Property<int>("VideoId")
                         .ValueGeneratedOnAdd()
@@ -253,14 +244,12 @@ namespace ServidorApi.Migrations
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("VideoId"));
 
                     b.Property<string>("Descripcion")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<int>("InmuebleId")
                         .HasColumnType("integer");
 
                     b.Property<string>("Url")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.HasKey("VideoId");
@@ -270,15 +259,15 @@ namespace ServidorApi.Migrations
                     b.ToTable("Videos");
                 });
 
-            modelBuilder.Entity("tarteko.Data.Consulta", b =>
+            modelBuilder.Entity("ServidorApi.Data.Consulta", b =>
                 {
-                    b.HasOne("tarteko.Data.Inmueble", "Inmueble")
+                    b.HasOne("ServidorApi.Data.Inmueble", "Inmueble")
                         .WithMany("Consultas")
                         .HasForeignKey("InmuebleId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("tarteko.Data.Usuario", "Usuario")
+                    b.HasOne("ServidorApi.Data.Usuario", "Usuario")
                         .WithMany()
                         .HasForeignKey("UsuarioId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -289,9 +278,9 @@ namespace ServidorApi.Migrations
                     b.Navigation("Usuario");
                 });
 
-            modelBuilder.Entity("tarteko.Data.Imagen", b =>
+            modelBuilder.Entity("ServidorApi.Data.Imagen", b =>
                 {
-                    b.HasOne("tarteko.Data.Inmueble", "Inmueble")
+                    b.HasOne("ServidorApi.Data.Inmueble", "Inmueble")
                         .WithMany("Imagenes")
                         .HasForeignKey("InmuebleId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -300,9 +289,9 @@ namespace ServidorApi.Migrations
                     b.Navigation("Inmueble");
                 });
 
-            modelBuilder.Entity("tarteko.Data.Inmueble", b =>
+            modelBuilder.Entity("ServidorApi.Data.Inmueble", b =>
                 {
-                    b.HasOne("tarteko.Data.Usuario", "Propietario")
+                    b.HasOne("ServidorApi.Data.Usuario", "Propietario")
                         .WithMany("InmueblesPropios")
                         .HasForeignKey("PropietarioId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -311,15 +300,15 @@ namespace ServidorApi.Migrations
                     b.Navigation("Propietario");
                 });
 
-            modelBuilder.Entity("tarteko.Data.Transaccion", b =>
+            modelBuilder.Entity("ServidorApi.Data.Transaccion", b =>
                 {
-                    b.HasOne("tarteko.Data.Inmueble", "Inmueble")
+                    b.HasOne("ServidorApi.Data.Inmueble", "Inmueble")
                         .WithMany("Transacciones")
                         .HasForeignKey("InmuebleId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("tarteko.Data.Usuario", "Usuario")
+                    b.HasOne("ServidorApi.Data.Usuario", "Usuario")
                         .WithMany()
                         .HasForeignKey("UsuarioId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -330,15 +319,15 @@ namespace ServidorApi.Migrations
                     b.Navigation("Usuario");
                 });
 
-            modelBuilder.Entity("tarteko.Data.UsuarioFavorito", b =>
+            modelBuilder.Entity("ServidorApi.Data.UsuarioFavorito", b =>
                 {
-                    b.HasOne("tarteko.Data.Inmueble", "Inmueble")
+                    b.HasOne("ServidorApi.Data.Inmueble", "Inmueble")
                         .WithMany("UsuariosFavoritos")
                         .HasForeignKey("InmuebleId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("tarteko.Data.Usuario", "Usuario")
+                    b.HasOne("ServidorApi.Data.Usuario", "Usuario")
                         .WithMany()
                         .HasForeignKey("UsuarioId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -349,15 +338,15 @@ namespace ServidorApi.Migrations
                     b.Navigation("Usuario");
                 });
 
-            modelBuilder.Entity("tarteko.Data.UsuarioInmueble", b =>
+            modelBuilder.Entity("ServidorApi.Data.UsuarioInmueble", b =>
                 {
-                    b.HasOne("tarteko.Data.Inmueble", "Inmueble")
+                    b.HasOne("ServidorApi.Data.Inmueble", "Inmueble")
                         .WithMany("UsuarioInmuebles")
                         .HasForeignKey("InmuebleId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("tarteko.Data.Usuario", "Usuario")
+                    b.HasOne("ServidorApi.Data.Usuario", "Usuario")
                         .WithMany("UsuarioInmuebles")
                         .HasForeignKey("UsuarioId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -368,9 +357,9 @@ namespace ServidorApi.Migrations
                     b.Navigation("Usuario");
                 });
 
-            modelBuilder.Entity("tarteko.Data.Video", b =>
+            modelBuilder.Entity("ServidorApi.Data.Video", b =>
                 {
-                    b.HasOne("tarteko.Data.Inmueble", "Inmueble")
+                    b.HasOne("ServidorApi.Data.Inmueble", "Inmueble")
                         .WithMany("Videos")
                         .HasForeignKey("InmuebleId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -379,7 +368,7 @@ namespace ServidorApi.Migrations
                     b.Navigation("Inmueble");
                 });
 
-            modelBuilder.Entity("tarteko.Data.Inmueble", b =>
+            modelBuilder.Entity("ServidorApi.Data.Inmueble", b =>
                 {
                     b.Navigation("Consultas");
 
@@ -394,7 +383,7 @@ namespace ServidorApi.Migrations
                     b.Navigation("Videos");
                 });
 
-            modelBuilder.Entity("tarteko.Data.Usuario", b =>
+            modelBuilder.Entity("ServidorApi.Data.Usuario", b =>
                 {
                     b.Navigation("InmueblesPropios");
 

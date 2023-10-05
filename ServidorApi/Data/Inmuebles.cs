@@ -65,14 +65,13 @@ namespace ServidorApi.Data
         
         [Required]
         public string Pais { get; set; }
-
-        public ICollection<Imagen> Imagenes { get; set; } = new List<Imagen>();
-        public ICollection<Video> Videos { get; set; } = new List<Video>();
-
+        
         [Required]
         public int PropietarioId { get; set; }
         public Usuario Propietario { get; set; }
 
+        public ICollection<Imagen> Imagenes { get; set; } = new List<Imagen>();
+        public ICollection<Video> Videos { get; set; } = new List<Video>();
         public ICollection<UsuarioInmueble> UsuarioInmuebles { get; set; } = new List<UsuarioInmueble>();
         public ICollection<Transaccion> Transacciones { get; set; } = new List<Transaccion>();
         public ICollection<UsuarioFavorito> UsuariosFavoritos { get; set; } = new List<UsuarioFavorito>();

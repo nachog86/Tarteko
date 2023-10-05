@@ -18,10 +18,11 @@ namespace ServidorApi.Migrations
                 {
                     UsuarioId = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    Auth0UserId = table.Column<string>(type: "text", nullable: false),
-                    Nombre = table.Column<string>(type: "text", nullable: false),
-                    Email = table.Column<string>(type: "text", nullable: false),
-                    Rol = table.Column<string>(type: "text", nullable: false)
+                    Username = table.Column<string>(type: "text", nullable: true),
+                    PasswordHash = table.Column<byte[]>(type: "bytea", nullable: true),
+                    PasswordSalt = table.Column<byte[]>(type: "bytea", nullable: true),
+                    Email = table.Column<string>(type: "text", nullable: true),
+                    Rol = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -42,10 +43,9 @@ namespace ServidorApi.Migrations
                     MetrosCubiertos = table.Column<decimal>(type: "numeric", nullable: true),
                     Descripcion = table.Column<string>(type: "text", nullable: false),
                     Precio = table.Column<decimal>(type: "numeric", nullable: false),
-                    TipoInmueble = table.Column<string>(type: "text", nullable: false),
-                    Estado = table.Column<string>(type: "text", nullable: false),
+                    TipoInmueble = table.Column<int>(type: "integer", nullable: false),
+                    Estado = table.Column<int>(type: "integer", nullable: false),
                     AreaTerreno = table.Column<decimal>(type: "numeric", nullable: true),
-                    Amenidades = table.Column<string>(type: "text", nullable: false),
                     Ciudad = table.Column<string>(type: "text", nullable: false),
                     Provincia = table.Column<string>(type: "text", nullable: false),
                     CodigoPostal = table.Column<string>(type: "text", nullable: false),
@@ -69,7 +69,7 @@ namespace ServidorApi.Migrations
                 {
                     ConsultaId = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    Mensaje = table.Column<string>(type: "text", nullable: false),
+                    Mensaje = table.Column<string>(type: "text", nullable: true),
                     FechaHora = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     UsuarioId = table.Column<int>(type: "integer", nullable: false),
                     InmuebleId = table.Column<int>(type: "integer", nullable: false)
@@ -97,8 +97,8 @@ namespace ServidorApi.Migrations
                 {
                     ImagenId = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    Url = table.Column<string>(type: "text", nullable: false),
-                    Descripcion = table.Column<string>(type: "text", nullable: false),
+                    Url = table.Column<string>(type: "text", nullable: true),
+                    Descripcion = table.Column<string>(type: "text", nullable: true),
                     InmuebleId = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
@@ -194,8 +194,8 @@ namespace ServidorApi.Migrations
                 {
                     VideoId = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    Url = table.Column<string>(type: "text", nullable: false),
-                    Descripcion = table.Column<string>(type: "text", nullable: false),
+                    Url = table.Column<string>(type: "text", nullable: true),
+                    Descripcion = table.Column<string>(type: "text", nullable: true),
                     InmuebleId = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
