@@ -8,6 +8,10 @@ using Microsoft.OpenApi.Models;
 using CloudinaryDotNet;
 using DotNetEnv;
 using ServidorApi.Data;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
+using ServidorApi.Service;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -23,6 +27,24 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseNpgsql(Environment.GetEnvironmentVariable("DATABASE_CONNECTION_STRING"))
 );
 
+// Configuración de Autenticación JWT
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+})
+.AddJwtBearer(options =>
+{
+    options.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateIssuerSigningKey = true,
+        
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Environment.GetEnvironmentVariable("JWT_SECRET_KEY"))),
+        ValidateIssuer = false,
+        ValidateAudience = false,
+    };
+});
+
 // Otros servicios
 builder.Services.AddControllers()
     .AddJsonOptions(options =>
@@ -32,7 +54,9 @@ builder.Services.AddControllers()
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-
+builder.Services.AddScoped<JwtService>(sp => 
+    new JwtService(Environment.GetEnvironmentVariable("JWT_SECRET_KEY"), Environment.GetEnvironmentVariable("JWT_EXP_DATE"))
+);
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -42,7 +66,9 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-// app.UseHttpsRedirection();
+// Middleware para usar Autenticación y Autorización
+app.UseAuthentication();
 app.UseAuthorization();
+
 app.MapControllers();
 app.Run();

@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using BCrypt.Net;
 
 namespace ServidorApi.Data
 {
@@ -14,8 +15,7 @@ namespace ServidorApi.Data
     {
         public int UsuarioId { get; set; }
         public string Username { get; set; }
-        public byte[] PasswordHash { get; set; }
-        public byte[] PasswordSalt { get; set; }
+       public string PasswordHash { get; set; } // Almacena el hash, no la contraseña original
         public string Email { get; set; }
         
         [Required]
@@ -24,7 +24,16 @@ namespace ServidorApi.Data
         // Propiedades de navegación
         public ICollection<Inmueble> InmueblesPropios { get; set; } = new List<Inmueble>();
         public ICollection<UsuarioInmueble> UsuarioInmuebles { get; set; } = new List<UsuarioInmueble>();
+
+        public void SetPassword(string password)
+        {
+            PasswordHash = BCrypt.Net.BCrypt.HashPassword(password);
+        }
+
+        public bool VerifyPassword(string password)
+        {
+            return BCrypt.Net.BCrypt.Verify(password, PasswordHash);
+        }
     }
 }
-
 
