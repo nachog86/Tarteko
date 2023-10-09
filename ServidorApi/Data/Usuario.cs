@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using BCrypt.Net;
@@ -25,10 +26,14 @@ namespace ServidorApi.Data
         public ICollection<Inmueble> InmueblesPropios { get; set; } = new List<Inmueble>();
         public ICollection<UsuarioInmueble> UsuarioInmuebles { get; set; } = new List<UsuarioInmueble>();
 
-        public void SetPassword(string password)
-        {
-            PasswordHash = BCrypt.Net.BCrypt.HashPassword(password);
-        }
+       public void SetPassword(string password)
+{
+    if (string.IsNullOrEmpty(password))
+    {
+        throw new ArgumentNullException(nameof(password), "Password cannot be null or empty.");
+    }
+    PasswordHash = BCrypt.Net.BCrypt.HashPassword(password);
+}
 
         public bool VerifyPassword(string password)
         {
